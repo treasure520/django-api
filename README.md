@@ -26,7 +26,7 @@ In the root of project, run:
 docker-compose up -d
 ```
 The frontend Nginx shoud be running on port 80 and bound to your host 0.0.0.0:80.  
-Go to [`http://<your_host_ip>/admin/`](http://<your_host_ip>/admin/) on a web browser to access Django Admin backend.  
+Go to [`http://<your_host_ip>/admin/`](http://<your_host_ip>/admin/) on a web browser to access Django Admin backend to manage Django account.  
 Go to [`http://<your_host_ip>/api-token/`](http://<your_host_ip>/api-token/) to request API token.  
 Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to request API.
 
@@ -44,11 +44,7 @@ Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to 
 ### Get API Token
 * request with your django username and password in HTTP Header
 ```bash
-curl -i -X POST -H 'Content-Type: application/json' http://localhost/api-token/ -d '
-{
-  "username":"your_django_admin",
-  "password":"your_django_admin_password"
-}'
+curl -i -X POST -H 'Content-Type: application/json' -d '{"username":"your_admin", "password":"your_password"}' http://localhost/api-token/
 ```
 
 * response
