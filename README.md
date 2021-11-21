@@ -32,7 +32,7 @@ Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to 
 
 ## API Request
 | Endpoint                           | HTTP Method             | Description             |
-| ---------------------------------- | :---------------------: | :---------------------: |
+| :--------------------------------: | :---------------------: | :---------------------: |
 | `/api-token/`                      | `GET`                   | `Get API Token`         |
 | `/api/users/`                      | `GET`                   | `List all users`        |
 | `/api/users/`                      | `POST`                  | `Create a new user`     |
