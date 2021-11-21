@@ -65,7 +65,7 @@ Vary: Cookie
 X-Content-Type-Options: nosniff
 Referrer-Policy: same-origin
 
-{"token":"your_token"}
+{"token": "your_token"}
 ```
 
 ### List users   
