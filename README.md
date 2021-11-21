@@ -45,7 +45,11 @@ Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to 
 ### Get API Token
 * request with your django username and password in HTTP Header
 ```bash
-curl -i -X POST -H 'Content-Type: application/json' -d '{"username":"your_admin", "password":"your_password"}' http://localhost/api-token/
+curl -i -X POST -H 'Content-Type: application/json' http://localhost/api-token/ -d '
+{
+  "username":"your_admin",
+  "password":"your_password"
+}'
 ```
 
 * response
