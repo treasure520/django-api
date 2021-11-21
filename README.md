@@ -17,7 +17,7 @@ DJANGO_SUPERUSER_PASSWORD=your_password
 ```
 **`MYSQL_ROOT_PASSWORD`**, **`MYSQL_DATABASE`**, **`MYSQL_USER`**, **`MYSQL_PASSWORD`** variables are required for MySQL.  
 **`MYSQL_DATABASE`**, **`MYSQL_USER`**, **`MYSQL_PASSWORD`** variables are required for Django, too.  
-**`DJANGO_DEBUG`** set Django run in debug mode or not.
+**`DJANGO_DEBUG`** set Django run in debug mode or not.  
 **`DJANGO_SUPERUSER_NAME`** and **`DJANGO_SUPERUSER_PASSWORD`** are required for creating superuser of Django admin backend.
 
 ## Startup
