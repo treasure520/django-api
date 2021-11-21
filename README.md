@@ -2,7 +2,7 @@
 A Django restframework based API with MySQL backend, Nginx frontend wrapped up with docker-compose.
 
 ## Configuration
-Rename or link the file `env.example` to `.env` and configure variables. Replace the values you need:
+Rename or link the file **`env.example`** to **`.env`** and configure variables. Replace the values you need:
 ```
 # MySQL
 MYSQL_ROOT_PASSWORD=your_password
