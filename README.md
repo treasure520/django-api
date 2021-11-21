@@ -3,18 +3,18 @@ A Django restframework based API with MySQL backend, Nginx frontend wrapped up w
 
 ## Configuration
 Rename or link the file `env.example` to `.env` and configure variables. Replace the values you need:
+```
+# MySQL
+MYSQL_ROOT_PASSWORD=your_password
+MYSQL_DATABASE=your_db_name
+MYSQL_USER=your_db_user
+MYSQL_PASSWORD=your_password
 
-># MySQL
->MYSQL_ROOT_PASSWORD=your_password
->MYSQL_DATABASE=your_db_name
->MYSQL_USER=your_db_user
->MYSQL_PASSWORD=your_password
->
-># Django
->DJANGO_DEBUG=False
->DJANGO_SUPERUSER_NAME=your_admin
->DJANGO_SUPERUSER_PASSWORD=your_password
-
+# Django
+DJANGO_DEBUG=False
+DJANGO_SUPERUSER_NAME=your_admin
+DJANGO_SUPERUSER_PASSWORD=your_password
+```
 **`MYSQL_ROOT_PASSWORD`**, **`MYSQL_DATABASE`**, **`MYSQL_USER`**, **`MYSQL_PASSWORD`** variables are required for MySQL.  
 **`MYSQL_DATABASE`**, **`MYSQL_USER`**, **`MYSQL_PASSWORD`** variables are required for Django, too.  
 **`DJANGO_DEBUG`** set Django run in debug mode or not.  
