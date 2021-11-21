@@ -47,8 +47,8 @@ Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to 
 ```bash
 curl -i -X POST -H 'Content-Type: application/json' http://localhost/api-token/ -d '
 {
-  "username":"your_admin",
-  "password":"your_password"
+  "username":"your_django_admin",
+  "password":"your_django_admin_password"
 }'
 ```
 
