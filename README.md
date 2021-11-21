@@ -26,7 +26,8 @@ In the root of project, run:
 docker-compose up -d
 ```
 The frontend Nginx shoud be running on port 80 and bound to your host 0.0.0.0:80.  
-Go to [`http://<your_host_ip>/admin/`](http://<your_host_ip>/admin/) on a web browser to access Django Admin backend to manage Django account.  
+And db MariaDB should be running on port 3306 and bound to your host 0.0.0.0:3306 for manipulating data conveniently.
+Go to [`http://<your_host_ip>/admin/`](http://<your_host_ip>/admin/) on a web browser to access Django Admin backend to manage Django accounts.  
 Go to [`http://<your_host_ip>/api-token/`](http://<your_host_ip>/api-token/) to request API token.  
 Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to request API.
 
