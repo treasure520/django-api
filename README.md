@@ -146,7 +146,7 @@ Referrer-Policy: same-origin
 }
 ```
 ### Update user
-* request with your API token in HTTP Header
+* request with your API token in HTTP Header. Suppose we pdate the fields job_title and mobile.
 ```bash
 curl -i -X PUT -H 'Content-Type: application/json' -H 'Authorization: Token your_token' http://localhost/api/users/3/ -d '
 {
