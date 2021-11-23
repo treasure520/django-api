@@ -42,7 +42,7 @@ Go to [`http://<your_host_ip>/api/users/`](http://<your_host_ip>/api/users/) to 
 | `/api/users/:id`                   | `DELETE`                | `Delete a user`         |
 
 ## Test API locally using curl
-If it is an HTTPS request, need to add the --insecure or -k parameter to curl command.
+Because nginx/ssl/nginx.crt and nginx/ssl/nginx.key are self-signed certificates, if it is an HTTPS request, you need to set the -k or --insecure option with curl command.
 ### Get API Token
 * request with your Django Admin username and password in HTTP Header
 ```bash
