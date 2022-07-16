@@ -1,0 +1,36 @@
+Dependencies Resolved
+
+=========================================================================================================================================================================
+ Package                                   Arch                Version                           Repository                                                         Size
+=========================================================================================================================================================================
+Installing:
+ percona-icu-data-files                    x86_64              8.0.28-20.1.el7                   /percona-icu-data-files-8.0.28-20.1.el7.x86_64                    3.3 M
+ percona-mysql-router                      x86_64              8.0.28-20.1.el7                   /percona-mysql-router-8.0.28-20.1.el7.x86_64                       20 M
+ percona-server-client                     x86_64              8.0.28-20.1.el7                   /percona-server-client-8.0.28-20.1.el7.x86_64                      71 M
+ percona-server-debuginfo                  x86_64              8.0.28-20.1.el7                   /percona-server-debuginfo-8.0.28-20.1.el7.x86_64                  3.4 G
+ percona-server-devel                      x86_64              8.0.28-20.1.el7                   /percona-server-devel-8.0.28-20.1.el7.x86_64                      9.7 M
+ percona-server-rocksdb                    x86_64              8.0.28-20.1.el7                   /percona-server-rocksdb-8.0.28-20.1.el7.x86_64                     51 M
+ percona-server-server                     x86_64              8.0.28-20.1.el7                   /percona-server-server-8.0.28-20.1.el7.x86_64                     363 M
+ percona-server-shared                     x86_64              8.0.28-20.1.el7                   /percona-server-shared-8.0.28-20.1.el7.x86_64                     7.4 M
+ percona-server-shared-compat              x86_64              8.0.28-20.1.el7                   /percona-server-shared-compat-8.0.28-20.1.el7.x86_64              6.9 M
+     replacing  mariadb-libs.x86_64 1:5.5.68-1.el7
+ percona-server-test                       x86_64              8.0.28-20.1.el7                   /percona-server-test-8.0.28-20.1.el7.x86_64                       973 M
+Installing for dependencies:
+ keyutils-libs-devel                       x86_64              1.5.8-3.el7                       base                                                               37 k
+ krb5-devel                                x86_64              1.15.1-54.el7_9                   updates                                                           273 k
+ libcom_err-devel                          x86_64              1.42.9-19.el7                     base                                                               32 k
+ libkadm5                                  x86_64              1.15.1-54.el7_9                   updates                                                           179 k
+ libselinux-devel                          x86_64              2.5-15.el7                        base                                                              187 k
+ libsepol-devel                            x86_64              2.5-10.el7                        base                                                               77 k
+ libverto-devel                            x86_64              0.2.5-4.el7                       base                                                               12 k
+ openssl-devel                             x86_64              1:1.0.2k-25.el7_9                 updates                                                           1.5 M
+ pcre-devel                                x86_64              8.32-17.el7                       base                                                              480 k
+ perl-Data-Dumper                          x86_64              2.145-3.el7                       base                                                               47 k
+ perl-JSON                                 noarch              2.59-2.el7                        base                                                               96 k
+ perl-Test-Harness                         noarch              3.28-3.el7                        base                                                              302 k
+ perl-Test-Simple                          noarch              0.98-243.el7                      base                                                              170 k
+ zlib-devel                                x86_64              1.2.7-20.el7_9                    updates                                                            50 k
+
+Transaction Summary
+=========================================================================================================================================================================
+Install  10 Packages (+14 Dependent packages)
