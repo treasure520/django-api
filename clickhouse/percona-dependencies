@@ -72,13 +72,15 @@ http://mirror.centos.org/centos/7/updates/x86_64/Packages/krb5-devel-1.15.1-54.e
 #libcom_err-devel
 http://mirror.centos.org/centos/7/os/x86_64/Packages/libcom_err-devel-1.42.9-19.el7.x86_64.rpm
 #libkadm5
-http://mirror.centos.org/centos/7/updates/x86_64/Packages/libkadm5-1.15.1-51.el7_9.x86_64.rpm
+http://mirror.centos.org/centos/7/updates/x86_64/Packages/libkadm5-1.15.1-54.el7_9.x86_64.rpm
 #libselinux-devel
 http://mirror.centos.org/centos/7/os/x86_64/Packages/libselinux-devel-2.5-15.el7.x86_64.rpm
 #libsepol-devel
 http://mirror.centos.org/centos/7/os/x86_64/Packages/libsepol-devel-2.5-10.el7.x86_64.rpm
 #libverto-devel
 http://mirror.centos.org/centos/7/os/x86_64/Packages/libverto-devel-0.2.5-4.el7.x86_64.rpm
+#pcre-devel
+http://mirror.centos.org/centos/7/os/x86_64/Packages/pcre-devel-8.32-17.el7.x86_64.rpm
 # perl
 http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-5.16.3-297.el7.x86_64.rpm
 # perl-Carp
@@ -152,9 +154,7 @@ http://mirror.centos.org/centos/7/updates/x86_64/Packages/openssl-libs-1.0.2k-25
 http://mirror.centos.org/centos/7/updates/x86_64/Packages/openssl-devel-1.0.2k-25.el7_9.x86_64.rpm
 #zlib
 http://mirror.centos.org/centos/7/updates/x86_64/Packages/zlib-1.2.7-20.el7_9.x86_64.rpm
-
-
-
-
-
-
+#perl-libs
+http://mirror.centos.org/centos/7/os/x86_64/Packages/perl-libs-5.16.3-297.el7.x86_64.rpm
+#net-tools
+http://mirror.centos.org/centos/7/os/x86_64/Packages/net-tools-2.0-0.25.20131004git.el7.x86_64.rpm
