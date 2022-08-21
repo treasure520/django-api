@@ -1,0 +1,218 @@
+#https://blog.csdn.net/weixin_44374871/article/details/115391593?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-8-115391593-blog-119670405.t0_layer_searchtargeting_sa&spm=1001.2101.3001.4242.5&utm_relevant_index=11
+
+# 啟停zookeeper 
+bin/zookeeper-server-start.sh config/zookeeper.properties &
+bin/zookeeper-server-stop.sh
+
+# 啟停kafka broker
+bin/kafka-server-start.sh config/server.properties &
+bin/kafka-server-start.sh -daemon config/server.properties
+bin/kafka-server-stop.sh 
+
+# 建立主題
+kafka-topics.sh --zookeeper <zookeeper connect> --create --topic <string> --replication-factor <integer> --partitions <integer>
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 2 --partitions 4 --topic test
+# kafka版本 >= 2.2
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+    --create：指定创建topic动作
+    --topic：指定新建topic的名称
+    --zookeeper： 指定kafka连接zk的连接url，该值和server.properties文件中的配置项{zookeeper.connect}一样
+    --partitions：指定当前创建的kafka分区数量，默认为1个
+    --replication-factor：指定每个分区的复制因子个数，默认1个
+
+
+# 增加分區
+kafka-topics.sh --zookeeper <zookeeper connect> --alter --topic <string> --partitions <integer>
+
+# kafka版本 < 2.2
+bin/kafka-topics.sh --zookeeper localhost:2181 --alter --topic topic1 --partitions 2
+# kafka版本 >= 2.2
+bin/kafka-topics.sh --bootstrap-server broker_host:port --alter --topic topic1 --partitions 2
+
+
+# 刪除主題
+kafka-topics.sh --zookeeper <zookeeper connect> --delete --topic <string>
+
+#删除topic，要在server.properties里加入这个配置，不过一般不会删除这种东西
+delete.topic.enable=true
+
+
+# 列出主題
+kafka-topics.sh --zookeeper <zookeeper connect> --list
+
+bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --list
+# 查询topic列表（支持0.9版本+）
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+
+# 描述主題
+kafka-topics.sh --zookeeper <zookeeper connect> --describe
+kafka-topics.sh --zookeeper <zookeeper connect> --topic <string>
+
+# 查看所有topic的详细信息
+bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --describe 
+# 查询topic详情
+bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic topicname
+
+
+# 列出有覆寫設定的主題
+kafka-topics.sh --zookeeper <zookeeper connect> --topics-with-overrides
+# 列出有問題的分區
+kafka-topics.sh --zookeeper <zookeeper connect> --describe --under-replicated-partitions
+
+# 消費群組
+# 消費者訊息舊版維護在ZooKeeper，新版由Kafka代理器維護
+# 列出消費者群組
+kafka-consumer-groups.sh --zookeeper <zookeeper connect> --list
+kafka-consumer-groups.sh --bootstrap-server <kafka connect> --list
+
+# 新消费者列表查询（支持0.9版本+）
+bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --list
+# 消费者列表查询（支持0.10版本+）
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+
+
+# 描述消費者群組
+kafka-consumer-groups.sh --zookeeper <zookeeper connect> --describe --group <string>
+kafka-consumer-groups.sh --bootstrap-server <kafka connect> --describe --group <string>
+kafka-consumer-groups.sh --bootstrap-server <kafka configs> --describe --all-groups
+
+# 显示某个消费组的消费详情（仅支持offset存储在zookeeper上的）
+bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --zookeeper localhost:2181 --group test
+# 显示某个新消费组的消费详情（0.9版本 - 0.10.1.0 之前）
+bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --describe --group my-group
+## 显示某个消费组的消费详情（0.10.1.0版本+）
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-group
+
+# 重设消费者组位移
+# 最早处
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group groupname --reset-offsets --all-topics --to-earliest --execute
+# 最新处
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group groupname --reset-offsets --all-topics --to-latest --execute
+# 某个位置
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group groupname --reset-offsets --all-topics --to-offset 2000 --execute
+# 调整到某个时间之后的最早位移
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group groupname --reset-offsets --all-topics --to-datetime 2019-09-15T00:00:00.000
+
+#更新到当前group最初的offset位置
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-earliest --execute
+#更新到指定的offset位置
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-offset 500000 --execute
+#更新到当前offset位置（解决offset的异常）
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-current --execute
+#offset位置按设置的值进行位移
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --shift-by -100000 --execute
+#offset设置到指定时刻开始
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-datetime 2017-08-04T14:30:00.000
+
+
+
+# 查詢消費者成員
+kafka-consumer-groups.sh --bootstrap-server <kafka connect> --all-groups --members 
+kafka-consumer-groups.sh --bootstrap-server <kafka connect> --group <string> --members
+
+# 查詢消費者狀態
+kafka-consumer-groups.sh --bootstrap-server <kafka connect> --descibe --all-groups --state
+kafka-consumer-groups.sh --bootstrap-server <kafka connect> --descibe --group <string> --state
+
+# 刪除群組
+kafka-consumer-groups.sh --zookeeper <zookeeper connect> --delete --group <string>
+
+# 從消費者群組刪除指定主題的偏移值
+kafka-consumer-groups.sh --zookeeper <zookeeper connect> --delete --group <string> --topic <string>
+
+# 匯出偏移值
+kafka-run-class.sh kafka.tools.ExportZkOffsets --zkconnect <zookeeper connect> --group <string> --output-file <string>
+
+# 匯入偏移值
+kafka-run-class.sh kafka.tools.ImportZkOffsets --zkconnect <zookeeper connect> --input-file <string>
+
+# 列出有覆寫設定的主題
+kafka-configs.sh --zookeeper <zookeeper connect> --descibe --entity-type topics <string>
+
+# 移除覆寫設定
+kafka-configs.sh --zookeeper <zookeeper connect> --alter --entity-type topics --entity-name <string> --delete-configs <string>
+
+# 偏好副本選舉(手動切換領導者)
+kafka-preferred-replica-election.sh --zookeeper <zookeeper connect>
+
+# kafka版本 <= 2.4
+bin/kafka-preferred-replica-election.sh --zookeeper zk_host:port/chroot
+# kafka新版本
+bin/kafka-preferred-replica-election.sh --bootstrap-server broker_host:port
+
+
+# 列出建議的分區指派，輸出的第一段為目前狀態，第二段為建議的分配
+kafka-reassign-partitions.sh --zookeeper <zookeeper connect> --generate --topics-to-move-json-file <string> --broke-list <broke-id,broker-id>
+
+# 執行建議的分區重分配 (分區遷移)
+kafka-reassign-partitions.sh --zookeeper <zookeeper configs> --execute --reassignment-json-file <string>
+
+# 驗證正在進行的分區重分配
+kafka-reassign-partitions.sh --zookeeper <zookeeper connect> --verify --reassignment-json-file <string>
+
+# 傾印Kafka日誌
+kafka-run-class.sh kafka.tools.DumpLogSegments --files <kafka-log>
+
+# 傾印Kafka日誌並顯示詳細資料
+kafka-run-class.sh kafka.tools.DumpLogSegments --files <kafka-log> --print-data-log
+
+# 驗證日誌的索引檔是否損壞
+kafka-run-class.sh kafka.tools.DumpLogSegments --files file_name.index,file_name.log --index-sanity-check
+
+# 驗證副本，副作用類似分區重分配，對系統會有重大影響
+kafka-replica-verification.sh --broker-list <broker1:9092,broker2:9092> --topic-white-list 'my-*'
+
+# 消費者，舊版使用--zookeeper，新版使用--broker-list
+kafka-console-consumer.sh --zookeeper <zookeeper connect> --topic <string> [--from-beginning --max-messages <integer> --prtition <integer>]
+kafka-console-consumer.sh --broker-list <broker connect> --topic <string> [--from-beginning --max-messages <integer> --prtition <integer>]
+kafka-console-consumer.sh --broker-list <broker connect> --white-list <regex>
+kafka-console-consumer.sh --borker-list <broker connect> --black-list <regex>
+
+# 消费者,其中"--from-beginning"为可选参数，表示要从头消费消息
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicname --from-beginning
+# 指定groupid
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicname --from-beginning --consumer-property group.id=old-consumer-group
+# 指定分区
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicname --from-beginning --partition 0
+
+# 高级点的用法
+bin/kafka-simple-consumer-shell.sh --brist localhost:9092 --topic test --partition 0 --offset 1234  --max-messages 10
+
+# 新消费者（支持0.9版本+）
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --new-consumer --from-beginning --consumer.config config/consumer.properties
+
+# kafka-verifiable-consumer.sh（消费者事件，例如：offset提交等）
+bin/kafka-verifiable-consumer.sh --broker-list localhost:9092 --topic test --group-id groupName
+
+# 取得消費者偏移值中的訊息
+kafka-console-consumer.sh --zookeeper <zookeeper connect> --topic __consumer_offsets --formatter 'kafka.coordinator.GroupMetadataManager$OffestsMessageFormatter' --max-messages 1
+
+# 向主題生產訊息
+kafka-console-producer.sh --broker-list <broker-list> --topic <string>
+
+# 生产者
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+# 新生产者（支持0.9版本+）
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test --producer.config config/producer.properties
+
+# kafka自带压测命令
+#生成压力测试，perf性能
+bin/kafka-producer-perf-test.sh --topic test --num-records 100 --record-size 1 --throughput 100  --producer-props bootstrap.servers=localhost:9092
+kafka-producer-perf-test.sh --topic first --record-size 1000 --num-records 200000 --throughput -1 --producer-props bootstrap.servers=master01:9092,master02:9092,slave01:9092,slave02:9092
+#--topic first 主题
+#--record-size 1000 一条消息覆盖的字节
+#--num-records 200000 一次性生成多少
+#--throughput -1 ：定量测延时，不定量测吞吐
+#--producer-props 所有的机器
+
+# kafka持续发送消息
+# 持续发送消息到指定的topic中，且每条发送的消息都会有响应信息：
+kafka-verifiable-producer.sh --broker-list $(hostname -i):9092 --topic test --max-messages 100000
+
+# 生成测试数据
+kafka-producer-perf-test.sh --topic test --num-records 500000 --record-size 1000 --producer-props bootstrap.servers=singleNode:9092 --throughput 1000000000
+
+
+
