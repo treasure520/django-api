@@ -17,3 +17,10 @@ Centos8部署zabbix6.4+postgresql15+PHP7.4教程
 https://www.8kiz.cn/archives/2587.html
 
 https://docs.timescale.com/self-hosted/latest/install/installation-linux/
+
+
+$ sudo rpm -e gpg-pubkey-f796ecb0
+$ sudo dnf clean all
+$ sudo rm -rf /var/cache/dnf/*
+$ sudo rm /var/cache/dnf/.gpgkeyschecked.yum
+$ sudo dnf update
