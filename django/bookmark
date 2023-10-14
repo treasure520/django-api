@@ -1,6 +1,9 @@
 Zabbix unreachable poller processes more than 75% busy
 https://blog.csdn.net/zhanghengwei1995/article/details/103816429
 
+Triggers with nodata() do not enter a problem state when delayed data is received
+https://support.zabbix.com/browse/ZBX-15761
+
 Linux 系统安装部署 PostgreSQL (一) 
 https://juejin.cn/post/7196904440334876731
 
