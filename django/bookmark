@@ -1,3 +1,6 @@
+zabbix通过agent.ping一直误报的问题
+https://blog.csdn.net/IcyWang1/article/details/106659081
+
 Zabbix unreachable poller processes more than 75% busy
 https://blog.csdn.net/zhanghengwei1995/article/details/103816429
 
