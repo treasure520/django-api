@@ -1,0 +1,2 @@
+curl -X POST http://127.0.0.1:8080/v2/send -H 'Content-Type: application/json' --data '{"number": "+886937072712", "recipients":["+886937072712"], "message":"❌Problem"}'
+curl -X POST http://127.0.0.1:8080/v2/send -H 'Content-Type: application/json' --data '{"number": "+886937072712", "recipients":["+886937072712"], "message":"✅ OK"}'
